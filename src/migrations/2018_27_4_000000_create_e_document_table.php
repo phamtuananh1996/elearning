@@ -18,6 +18,6 @@ class CreateEDocumentTable extends Migration
 
     public function down()
     {
-        Schema::drop('documents');
+        Schema::drop('e_documents');
     }
 }
