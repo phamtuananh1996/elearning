@@ -1,7 +1,6 @@
 {
     "name": "gfl/elearning",
     "description": "package for elearning",
-    "type": "composer-plugin",
     "license": "MIT",
     "authors": [
         {
