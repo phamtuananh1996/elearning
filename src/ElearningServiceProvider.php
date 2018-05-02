@@ -15,10 +15,16 @@ class ElearningServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         $this->publishes([
             __DIR__ . '/migrations' => $this->app->databasePath() . '/migrations'
         ], 'migrations');
+
+        $this->loadViewsFrom(__DIR__.'/views', 'Elearning');
+        $this->publishes([
+            __DIR__.'/assets' => public_path('/'),
+        ], 'public');
 
         $this->app['router']->aliasMiddleware('jwt.auth' , JWTAuth::class);
     }
