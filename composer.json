@@ -23,6 +23,7 @@
             "providers": [
                 "GFL\\Elearning\\ElearningServiceProvider"
             ]
-        }
+        },
+        "class": "My\\Plugin"
     }
 }
