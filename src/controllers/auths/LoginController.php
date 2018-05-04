@@ -1,13 +1,14 @@
 <?php
 namespace GFL\Elearning\controllers\auths;
 
-use App\Http\Controllers\Controller;
+use GFL\Elearning\controllers\ApiController;
 use Illuminate\Http\Request;
+use GFL\Elearning\requests\AuthRequests\LoginRequest;
 use JWTAuth;
 
-class LoginController extends Controller
+class LoginController extends ApiController
 {
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         $token = null;
         $credentials = [
@@ -24,11 +25,6 @@ class LoginController extends Controller
         $user = JWTAuth::toUser($token);
         $data = ['user' => $user, 'token' => $token];
         return $this->response($data);
-    }
-
-    public function response($data,$status=200)
-    {
-      return response()->json($data);
     }
 
 }

@@ -22,11 +22,11 @@ class VerifyJWTToken
             $user = JWTAuth::parseToken()->authenticate();
         }catch (JWTException $e) {
             if($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                return response()->json(['error'=>'token_expired'], $e->getStatusCode());
+                return response()->json(['error'=>'token_expired'], 505);
             }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
-                return response()->json(['error'=>'token_invalid'], $e->getStatusCode());
+                return response()->json(['error'=>'token_invalid'], 505);
             }else{
-                return response()->json(['error'=>'Token is required'], $e->getStatusCode());
+                return response()->json(['error'=>'Token is required'], 505);
             }
         }
         return $next($request);

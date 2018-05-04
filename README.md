@@ -8,3 +8,10 @@ step2 : public view
 - php artisan vendor:publish --tag=public
 
 step3 : run localhost:8000/elearning
+
+
+//for dev 
+
+- create controller : php artisan gfl:make-controller {nameController}
+- create migration : php artisan gfl:make-migration {nameMigration}
+- create model : php artisan gfl:make-model {nameModel}

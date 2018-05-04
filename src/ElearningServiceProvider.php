@@ -7,6 +7,13 @@ use GFL\Elearning\middlewares\VerifyJWTToken as JWTAuth;
 
 class ElearningServiceProvider extends ServiceProvider
 {
+    protected $commands = [
+         'GFL\Elearning\commands\CreateController',
+         'GFL\Elearning\commands\CreateMigration',
+         'GFL\Elearning\commands\CreateModel',
+    //     'GFL\Elearning\commands\CreateRequest',
+    ];
+
     /**
      * Bootstrap the application services.
      *
@@ -27,6 +34,12 @@ class ElearningServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->app['router']->aliasMiddleware('jwt.auth' , JWTAuth::class);
+
+        //command
+
+        if ($this->app->runningInConsole()) {
+            $this->commands($this->commands);
+        }
     }
 
     /**
@@ -36,7 +49,8 @@ class ElearningServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('GFL\Elearning\controllers\edocuments\EdocumentController');
-        $this->app->make('GFL\Elearning\controllers\auths\LoginController');
+        //$this->app->make('GFL\Elearning\controllers\edocuments\EDocumentController');
+        //$this->app->make('GFL\Elearning\controllers\auths\LoginController');
+        //$this->app->make('GFL\Elearning\controllers\emodules\EModuleController');
     }
 }
